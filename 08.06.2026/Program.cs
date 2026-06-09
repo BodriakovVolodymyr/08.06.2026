@@ -7,7 +7,7 @@
             Console.WriteLine("\n~~~~~~~~~~~~~Task1~~~~~~~~~~~~~~~~~");
             Console.WriteLine(Task1(2, 6));
 
-            Console.WriteLine("\n~~~~~~~~~~~~~Task2~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("\n~~~~~~~~~~~~~Task5~~~~~~~~~~~~~~~~~");
             Employee empl = new Employee("Petro PP", new DateTime(2000, 11, 9), "0987654321", "petro.pp@example.com", "Developer", "Develop software");
             empl.Print();
 
@@ -29,7 +29,13 @@
             City city = new City("Kyiv", "Ukraine", 2800000, 044, "Shevchenko, Holosiiv, Pechersk");
             city.Print();
             city.setPopulation(3000000);
-         
+
+
+            Console.WriteLine("\n~~~~~~~~~~~~~Task6~~~~~~~~~~~~~~~~~");
+            Plane plane = new Plane("747", "Boeing", 2020);
+            plane.Print();
+            Plane plane2 = new Plane("A380", "Airbus", 2019, "Passenger");
+            plane2.Print(true);
         }
 
         static int Task1(int x, int y)
@@ -80,8 +86,9 @@
         string mail;
         string position;
         string duties;
-        public Employee(){ }
-        public Employee(string _name,DateTime birthday,string tel,string mail,string position,string duties){
+        public Employee() { }
+        public Employee(string _name, DateTime birthday, string tel, string mail, string position, string duties)
+        {
             name = _name;
             this.birthday = birthday;
             this.tel = tel;
@@ -90,21 +97,21 @@
             this.duties = duties;
         }
         public string getName()
-        {  return name; }
+        { return name; }
         public DateTime getBirthday()
         { return birthday; }
         public string getTel()
         { return tel; }
         public string getMail()
         { return mail; }
-        public string getPosition() 
+        public string getPosition()
         { return position; }
         public string getDuties()
         { return duties; }
 
 
         public void setName(string _name)
-        {  name = _name; }
+        { name = _name; }
         public void setBirthday(DateTime _birthday)
         { birthday = _birthday; }
         public void setTel(string _tel)
@@ -117,8 +124,8 @@
         { duties = _duties; }
         public void Print()
         {
-            Console.WriteLine($"Name {name} Year of birth {birthday.Year} Month of birth {birthday.Month} Tel - {tel} Mail - {mail} Position - {position} Duties - {duties}");        
-        }    
+            Console.WriteLine($"Name {name} Year of birth {birthday.Year} Month of birth {birthday.Month} Tel - {tel} Mail - {mail} Position - {position} Duties - {duties}");
+        }
     }
 
 
@@ -169,5 +176,69 @@
             Console.WriteLine($"City name {name} Country {country} Population {population} Tel code {tel_code} City districts {city_districts}");
         }
 
+    }
+
+
+    class Plane
+    {
+        string model;
+        string manufacturer;
+        int year;
+        string type;
+        public Plane() { }
+       
+        public Plane(string _model, string _manufacturer, int _year)
+        {
+            model = _model;
+            manufacturer = _manufacturer;
+            year = _year;
+        }
+        public Plane(string _model, string _manufacturer, int _year, string _type)
+        {
+            model = _model;
+            manufacturer = _manufacturer;
+            year = _year;
+            type = _type;
+        }
+        
+        public string getModel()
+        { return model; }
+        public string getManufacturer()
+        { return manufacturer; }
+        public int getYear()
+        { return year; }
+        public string getType()
+        { return type; }
+
+
+        public void setManufacturer(string _manufacturer)
+        {
+            manufacturer = _manufacturer;
+        }
+        public void setModel(string _model)
+        {
+            model = _model;
+        }
+        public void setYear(int _year)
+        {
+            year = _year;
+        }
+        public void setType(string _type)
+        {
+            type = _type;
+        }
+
+        public void Print(bool fullInfo)
+        {
+            if (fullInfo)
+            {
+                Console.WriteLine($"Model {model} Manufacturer {manufacturer} Year {year} Type {type}");
+            }
+            
+        }
+        public void Print()
+        {
+            Console.WriteLine($"Model {model} Manufacturer {manufacturer} Year {year}");    
+        }
     }
 }
